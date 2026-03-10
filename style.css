@@ -1,3 +1,4 @@
+/* Reset e estilo base */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,8 +8,8 @@
 
 body {
     background-color: #f0f8f0;
-    line-height: 1.6;
     color: #333;
+    line-height: 1.6;
 }
 
 .container {
@@ -17,10 +18,14 @@ body {
     margin: auto;
 }
 
+/* Header e menu fixo */
 header {
     background-color: #2e7d32;
     color: white;
     padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
@@ -32,6 +37,7 @@ nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -49,12 +55,12 @@ nav ul li a:hover {
     color: #a5d6a7;
 }
 
+/* Hero section */
 .hero {
     background-color: #4caf50;
     color: white;
     text-align: center;
     padding: 50px 20px;
-    position: relative;
 }
 
 .hero-img {
@@ -64,21 +70,18 @@ nav ul li a:hover {
     border-radius: 8px;
 }
 
-.hero .btn {
-    background-color: #2e7d32;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
-    display: inline-block;
-    border-radius: 5px;
-    text-decoration: none;
+/* Fade-in animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
 }
 
-.hero .btn:hover {
-    background-color: #1b5e20;
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
-.practices {
+/* Cards */
+.practices, .dicas {
     padding: 50px 0;
 }
 
@@ -103,9 +106,32 @@ nav ul li a:hover {
     transform: translateY(-10px);
 }
 
+.card-img, .dicas-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Botões */
+.btn {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #1b5e20;
+}
+
+/* Quiz */
 .quiz-section {
-    padding: 50px 0;
     text-align: center;
+    padding: 50px 0;
 }
 
 .quiz-section button {
@@ -123,14 +149,27 @@ nav ul li a:hover {
     background-color: #45a049;
 }
 
+/* Contato */
 .contact {
     padding: 50px 0;
     text-align: center;
 }
 
+/* Footer */
 footer {
     background-color: #2e7d32;
     color: white;
     text-align: center;
     padding: 10px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
 }
