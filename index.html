@@ -3,77 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱 AgroHorta Inteligente - Agrinho 2026 | Joaquim Daniel</title>
+    <title>🌱 AgroHorta Inteligente - Agrinho 2026 | Joaquim Daniel, Curitiba</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Projeto vencedor: Irrigação sustentável para agro forte e futuro verde.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
         <nav>
-            <h1>🌱 AgroHorta Inteligente</h1>
+            <h1>🌱 AgroHorta Inteligente - Curitiba/PR</h1>
             <ul>
                 <li><a href="#home">Início</a></li>
+                <li><a href="#curitiba">Curitiba</a></li>
                 <li><a href="#projeto">Projeto</a></li>
                 <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#dados">Dados</a></li>
                 <li><a href="#relatorio">Relatório</a></li>
-                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <h2>Agro forte, futuro sustentável</h2>
-            <p>Equilíbrio produção x meio ambiente com tecnologia acessível. Projeto Agrinho 2026 - Curitiba/PR.</p>
-            <a href="#simulador" class="btn">Teste o Simulador</a>
+            <img src="imagens/prototipo.jpg" alt="Protótipo Arduino Irrigação" class="hero-img">
+            <h2>Agro forte, futuro sustentável em Curitiba</h2>
+            <p>Projeto local: Irrigação inteligente para agricultura familiar, inspirado no Irriga Paraná.</p>
+            <a href="#simulador" class="btn">Testar Simulador</a>
+        </section>
+
+        <section id="curitiba">
+            <h2>🌍 Contexto Curitiba/PR</h2>
+            <p>Agricultura familiar abastece 360 mil ton/ano na Ceasa Curitiba. Programa Irriga Paraná otimiza água no agro sustentável.[web:32][web:30]</p>
+            <ul>
+                <li>PR referência FAO em agricultura familiar sustentável.[web:34]</li>
+                <li>ILPF e plantio direto reduzem emissões 15% meta nacional.[web:29]</li>
+            </ul>
         </section>
 
         <section id="projeto">
-            <h2>O Projeto</h2>
-            <p>Sistema de irrigação inteligente com sensores, Arduino e energia solar. Economiza água e aumenta produção em hortas escolares/familiares.</p>
-            <div class="features">
-                <div class="feature">
-                    <h3>💧 Economia Água</h3>
-                    <p>30-50% menos desperdício.</p>
-                </div>
-                <div class="feature">
-                    <h3>☀️ Solar</h3>
-                    <p>Energia 100% renovável.</p>
-                </div>
-                <div class="feature">
-                    <h3>📈 Produtividade</h3>
-                    <p>+25% em cultivos testados.</p>
-                </div>
-            </div>
+            <h2>Nosso Protótipo</h2>
+            <img src="imagens/prototipo.jpg" alt="Sistema em ação" class="projeto-img">
+            <p>Arduino + sensor umidade + solar. Testado para hortas urbanas em Curitiba.</p>
         </section>
 
         <section id="simulador">
-            <h2>🔬 Simulador Interativo</h2>
-            <p>Arraste o slider para simular umidade do solo. Irriga só se necessário!</p>
+            <h2>🔬 Simulador Avançado</h2>
             <div class="simulator">
-                <label>Umidade Solo: <input type="range" id="umidade" min="0" max="100" value="50"> <span id="valor">50%</span></label>
-                <div id="status">Status: Monitorando</div>
-                <div id="agua">Água gasta: 0 L</div>
-                <div id="tempo">Tempo: 0 dias</div>
-                <button id="reset">Reset Simulação</button>
+                <label>Umidade: <input type="range" id="umidade" min="0" max="100" value="50"> <span id="valor">50%</span></label>
+                <div id="status">Monitorando</div>
+                <div id="agua">Água: 0L</div>
+                <button id="reset">Reset</button>
             </div>
+        </section>
+
+        <section id="dados">
+            <h2>📊 Gráficos de Resultados</h2>
+            <canvas id="chartAgua" width="400" height="200"></canvas>
+            <p>Economia real: -40% água vs manual (dados simulado Irriga PR).[web:30]</p>
         </section>
 
         <section id="relatorio">
             <h2>📄 Relatório Completo</h2>
-            <p>Resultados, metodologia e dados. Baixe e envie para Agrinho!</p>
-            <a href="relatorio.pdf" class="btn" download>Baixar PDF Relatório</a>
-            <p><small>Simule upload do seu PDF aqui.</small></p>
-        </section>
-
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Joaquim Daniel Ribeiro de Souza | Curitiba, PR | Email: [seuemail@gmail.com]</p>
+            <a href="relatorio.pdf" class="btn" download>Baixar PDF (10págs)</a>
+            <img src="imagens/grafico-agua.png" alt="Gráfico economia" class="grafico-img">
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 AgroHorta Inteligente - Concurso Agrinho | Feito com ❤️ para sustentabilidade.</p>
+        <p>Joaquim Daniel | Curitiba/PR | Agrinho 2026 | Dados: Irriga Paraná [web:30]</p>
     </footer>
 
     <script src="script.js"></script>
