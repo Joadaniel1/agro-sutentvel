@@ -52,3 +52,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     atualizarSimulacao();
 });
+// ... (mantenha anterior e adicione gráfico:)
+const ctx = document.getElementById('chartAgua').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Dia 1', 'Dia 7', 'Dia 14', 'Dia 21', 'Dia 30'],
+        datasets: [{
+            label: 'Água Manual (L)',
+            data: [150, 148, 152, 149, 151],
+            borderColor: '#DC143C',
+            tension: 0.1
+        }, {
+            label: 'Nosso Sistema (L)',
+            data: [90, 88, 92, 89, 91],
+            borderColor: '#228B22',
+            tension: 0.1
+        }]
+    },
+    options: { responsive: true, scales: { y: { beginAtZero: true } } }
+});
+
+// No reset, atualize chart se quiser dinamico
