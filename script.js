@@ -1,63 +1,54 @@
-const perguntas = [
-    {
-        pergunta: "Qual prática ajuda a conservar o solo e reduzir pragas?",
-        opcoes: ["Queimada", "Rotação de culturas", "Uso excessivo de químicos"],
-        correta: "Rotação de culturas"
-    },
-    {
-        pergunta: "O que é plantio direto?",
-        opcoes: ["Evitar revolver o solo", "Queimar restos de cultura", "Uso de pesticidas"],
-        correta: "Evitar revolver o solo"
-    },
-    {
-        pergunta: "Compostagem serve para:",
-        opcoes: ["Poluir o solo", "Transformar resíduos em fertilizante", "Eliminar pragas com fogo"],
-        correta: "Transformar resíduos em fertilizante"
+document.addEventListener('DOMContentLoaded', function() {
+    const umidadeSlider = document.getElementById('umidade');
+    const valorSpan = document.getElementById('valor');
+    const statusDiv = document.getElementById('status');
+    const aguaDiv = document.getElementById('agua');
+    const tempoDiv = document.getElementById('tempo');
+    const resetBtn = document.getElementById('reset');
+
+    let aguaUsada = 0;
+    let dias = 0;
+    let intervalo;
+
+    function atualizarSimulacao() {
+        const umidade = parseInt(umidadeSlider.value);
+        valorSpan.textContent = umidade + '%';
+
+        if (umidade < 30) {
+            statusDiv.textContent = '🚿 IRRIGANDO! 💧';
+            statusDiv.className = 'vermelho';
+            aguaUsada += Math.random() * 2 + 1; // Simula gasto variável
+            aguaDiv.textContent = 'Água gasta: ' + Math.round(aguaUsada * 10) / 10 + ' L';
+        } else {
+            statusDiv.textContent = '✅ Umidade OK - Sem irrigação';
+            statusDiv.className = 'verde';
+        }
     }
-];
 
-let perguntaAtual = 0;
+    umidadeSlider.addEventListener('input', atualizarSimulacao);
 
-const perguntaEl = document.getElementById("pergunta");
-const opcoesEl = document.getElementById("opcoes");
-const resultadoEl = document.getElementById("resultado");
-const proximaBtn = document.getElementById("proxima");
+    // Simulação automática de tempo
+    intervalo = setInterval(() => {
+        dias++;
+        tempoDiv.textContent = 'Tempo simulado: ' + dias + ' dias';
+        if (dias % 5 === 0) { // Rega periódica simulada
+            aguaUsada += 5;
+            aguaDiv.textContent = 'Água gasta: ' + Math.round(aguaUsada * 10) / 10 + ' L';
+        }
+    }, 5000); // 5s = 1 dia simulado
 
-function mostrarPergunta() {
-    resultadoEl.textContent = "";
-    proximaBtn.style.display = "none";
-    const p = perguntas[perguntaAtual];
-    perguntaEl.textContent = p.pergunta;
-    opcoesEl.innerHTML = "";
-    p.opcoes.forEach(op => {
-        const btn = document.createElement("button");
-        btn.textContent = op;
-        btn.onclick = () => verificarResposta(op);
-        opcoesEl.appendChild(btn);
+    resetBtn.addEventListener('click', () => {
+        clearInterval(intervalo);
+        aguaUsada = 0;
+        dias = 0;
+        umidadeSlider.value = 50;
+        valorSpan.textContent = '50%';
+        statusDiv.textContent = 'Status: Resetado';
+        statusDiv.className = '';
+        aguaDiv.textContent = 'Água gasta: 0 L';
+        tempoDiv.textContent = 'Tempo: 0 dias';
+        intervalo = setInterval(arguments.callee, 5000); // Reinicia
     });
-}
 
-function verificarResposta(resposta) {
-    const correta = perguntas[perguntaAtual].correta;
-    if(resposta === correta) {
-        resultadoEl.textContent = "Correto!";
-        resultadoEl.style.color = "green";
-    } else {
-        resultadoEl.textContent = `Errado! A resposta correta é: ${correta}`;
-        resultadoEl.style.color = "red";
-    }
-    proximaBtn.style.display = "inline-block";
-}
-
-proximaBtn.onclick = () => {
-    perguntaAtual++;
-    if(perguntaAtual < perguntas.length) {
-        mostrarPergunta();
-    } else {
-        perguntaEl.textContent = "Parabéns! Você terminou o quiz.";
-        opcoesEl.innerHTML = "";
-        proximaBtn.style.display = "none";
-    }
-}
-
-mostrarPergunta();
+    atualizarSimulacao();
+});
